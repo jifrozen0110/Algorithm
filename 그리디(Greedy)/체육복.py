@@ -1,5 +1,4 @@
 def solution(n, lost, reserve):
-    answer = 0
     data=[]
     count=0
     for i in range (31):
