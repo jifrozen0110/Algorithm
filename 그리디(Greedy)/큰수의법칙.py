@@ -1,17 +1,10 @@
-n,m,k=map(int,input().split())
-data=list(map(int,input().split()))
+n, m, k = map(int, input().split())
+data = list(map(int, input().split()))
 
+result = 0
+data.sort(reverse=True)
+a = m // (k + 1) * k + (m % (k + 1))
+result += data[0] * a
+result += data[1] * (m - a)
 
-data.sort()
-first=data[n-1]
-second=data[n-2]
-a=0
-for i in range(1,m+1):
-    if i%(k+1)!=0:
-        a=a+first
-    else:
-        a=a+second
-
-
-print(a)
-
+print(result)
