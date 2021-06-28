@@ -1,14 +1,17 @@
-n,k=map(int,input().split())
+n, k = map(int, input().split())
 
-result=0
-while True:
-    target=(n//k)*k
-    result+=(n-target)
-    n=target
-    if n<k:
+result = 0
+
+while (n >= k):
+    if (n // k > 0):
+        result += n % k
+        n = n // k
+        result += 1
+
+while n > 1:
+    if n == 1:
         break
-    result+=1
-    n//=k
+    n = n - 1
+    result += 1
 
-result+=(n-1)
 print(result)
