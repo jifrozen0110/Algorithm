@@ -1,15 +1,10 @@
-data=input()
-n=[]
-for i in data:
-    n.append(int(i))
+data = list(map(int, input()))
+a = data[0]
 
-n.sort()
-result=n[0]
-for i in range (1,len(n)):
-    num=n[i]
-    if num<=1 or result<=1:
-        result+=num
+for i in range(1, len(data)):
+    if a <= 1 or data[i] <= 1:
+        a = a + data[i]
     else:
-        result=result*num
+        a = a * data[i]
 
-print(result)
+print(a)
