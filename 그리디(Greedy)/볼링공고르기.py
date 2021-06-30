@@ -1,14 +1,10 @@
-n,m=map(int,input().split())
-data=list(map(int,input().split()))
-data.sort()
+n, m = map(int, input().split())
+data = list(map(int, input().split()))
+result = 0
 
-count=0
-array=[0]*11
-for i in data:
-    array[i]+=1
+for i in range(len(data)):
+    for j in range(i, len(data)):
+        if data[i] != data[j]:
+            result += 1
 
-for i in range(1,m+1):
-    n-=array[i]
-    count+=array[i]*n
-
-print(count)
+print(result)
