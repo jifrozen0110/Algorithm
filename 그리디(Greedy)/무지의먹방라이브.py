@@ -1,27 +1,27 @@
-import heapq
+from operator import itemgetter
+
 
 def solution(food_times, k):
-    if sum(food_times)<=k:
-        return -1
-
-    q=[]
+    foods = []
     for i in range(len(food_times)):
-        heapq.heappush(q,(food_times[i],i+1))
+        foods.append([food_times[i], i])
 
-    sum_value=0
-    previous=0
-    length=len(food_times)
+    foods.sort()
+    pretime = 0
+    n = len(food_times)
+    for i in range(len(food_times)):
+        time = foods[i][0] - pretime
+        if time != 0:
+            spend = time * n
+            if spend <= k:
+                k -= spend
+                pretime = foods[i][0]
+            else:
+                k %= n
+                sublist = sorted(foods[i:], key=itemgetter(1))
+                return sublist[k][1] + 1
+        n -= 1
+    return -1
 
-    while sum_value+((q[0][0]-previous)*length)<=k:
-        now=heapq.heappop(q)[0]
-        sum_value+=(now-previous)*length
-        length-=1
-        previous=now
 
-    result=sorted(q,key=lambda x:x[1])
-    return result[(k-sum_value)%length][1]
-
-
-
-
-
+print(solution([3,1,2], 5))
