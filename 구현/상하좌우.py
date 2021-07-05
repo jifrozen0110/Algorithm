@@ -1,19 +1,18 @@
-n=int(input())
-a,b=1,1
-data=list(input().split())
+n = int(input())
 
-for i in range (len(data)):
-    if data[i]=='L':
-        if b>1:
-            b-=1
-    if data[i]=='R':
-        if b <n:
-            b+=1
-    if data[i]=='U':
-        if a>1:
-            a-=1
-    if data[i]=='D':
-        if a<n:
-            a+=1
+data = list(input().split())
 
-print(a,b)
+dx = [0, -1, 0, 1]
+dy = [1, 0, -1, 0]
+dr = ['R', 'U', 'L', 'D']
+
+x, y = 0, 0
+
+for i in data:
+    for j in range(len(dr)):
+        if i == dr[j]:
+            if x + dx[j] >= 0 and x + dx[j] < 5 and y + dy[j] >= 0 and y + dy[j] < 5:
+                x += dx[j]
+                y += dy[j]
+
+print(x + 1, y + 1)
