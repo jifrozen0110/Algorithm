@@ -54,7 +54,7 @@ def quick_sort2(array):
     return quick_sort2(left_side)+[pivot]+quick_sort2(right_side)
 
 
-quick_sort(array,0,len(array)-1)
+quick_sort(array)
 
 
 # 계수 정렬
