@@ -1,3 +1,4 @@
+# https://www.acmicpc.net/problem/2512
 n=int(input())
 data=list(map(int,input().split()))
 m=int(input())
