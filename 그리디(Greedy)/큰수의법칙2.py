@@ -1,17 +1,8 @@
-n,m,k=map(int,input().split())
-data=list(map(int,input().split()))
-
-
-data.sort()
-first=data[n-1]
-second=data[n-2]
-a=0
-count=int(m/(k+1))*k
-count+=m%(k+1)
-
-a+=(count)*first
-a+=(m-count)*second
-
-
-print(a)
-
+n, k, m = map(int, input().split())
+data = list(map(int, input().split()))
+data.sort(reverse=True)
+m1 = data[0]
+m2 = data[1]
+a = k // (m + 1)
+total = m2 * a + m1 * (k - a)
+print(total)
