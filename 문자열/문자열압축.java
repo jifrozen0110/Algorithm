@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class 문자열압축 {
     public static String solution(String str) {
         String answer = "";
         int compression = 1;
@@ -27,6 +27,6 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String str = kb.next();
         System.out.println(solution(str));
-
+        kb.close();
     }
 }

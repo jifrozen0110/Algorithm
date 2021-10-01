@@ -1,6 +1,6 @@
 import java.util.*;;
 
-public class Main {
+public class 문장속단어 {
     public static String solution(String str) {
         String answer = "";
         int m = Integer.MIN_VALUE;// pos
@@ -29,6 +29,7 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String str = kb.nextLine();
         System.out.println(solution(str));
+        kb.close();
     }
 
 }

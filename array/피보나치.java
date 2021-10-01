@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class 피보나치 {
     public static ArrayList<Integer> arr = new ArrayList<>();
 
     public static void main(String args[]) {
@@ -17,6 +17,6 @@ public class Main {
         for (int a : arr) {
             System.out.print(a + " ");
         }
-
+        sc.close();
     }
 }

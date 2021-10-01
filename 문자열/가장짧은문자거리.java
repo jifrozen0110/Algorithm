@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class 가장짧은문자거리 {
     public static int[] solution(String str, char c) {
         int[] answer = new int[str.length()];
         int p = 1000;
@@ -31,6 +31,6 @@ public class Main {
         for (int x : solution(str, c)) {
             System.out.print(x + " ");
         }
-
+        kb.close();
     }
 }

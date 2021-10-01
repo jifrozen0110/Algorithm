@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Mian {
+public class 뒤집은소수 {
     public static boolean isPrime(int num) {
         if (num == 1)
             return false;
@@ -30,6 +30,7 @@ public class Mian {
         for (int i : answer) {
             System.out.print(i + " ");
         }
+        sc.close();
 
     }
 }

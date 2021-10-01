@@ -1,6 +1,6 @@
 import java.util.*;;
 
-public class Main {
+public class 회문문자열 {
     public static String solution(String str) {
         String answer = "YES";
         str = str.toUpperCase();
@@ -32,7 +32,7 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String str = kb.next();
         System.out.println(solution(str));
-
+        kb.close();
     }
 
 }

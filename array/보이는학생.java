@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class 보이는학생 {
     public static int solution(int n, int[] list) {
         int answer = 1;
         int max = list[0];
@@ -21,6 +21,6 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         System.out.print(solution(n, arr));
-
+        sc.close();
     }
 }

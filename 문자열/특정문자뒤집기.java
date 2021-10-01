@@ -1,6 +1,6 @@
 import java.util.*;;
 
-public class Main {
+public class 특정문자뒤집기 {
     public static String solution(String str) {
         String answer = "";
         char[] s = str.toCharArray();
@@ -28,7 +28,7 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String str = kb.next();
         System.out.println(solution(str));
-
+        kb.close();
     }
 
 }

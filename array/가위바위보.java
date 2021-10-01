@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Main {
+public class 가위바위보 {
     public static char[] solution(int n, int[] A, int[] B) {
         char[] answer = new char[n];
         for (int i = 0; i < n; i++) {
@@ -43,6 +43,7 @@ public class Main {
         for (char c : solution(n, A, B)) {
             System.out.println(c);
         }
+        sc.close();
 
     }
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class 유효한팰린드롬 {
     public static String solution(String str) {
         String answer = "NO";
         // replaceAll [^A-Z] -> A-Z가 아니면 다 바꾸기
@@ -17,6 +17,6 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String str = kb.nextLine();
         System.out.println(solution(str));
-
+        kb.close();
     }
 }

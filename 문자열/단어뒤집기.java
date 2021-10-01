@@ -1,6 +1,6 @@
 import java.util.*;;
 
-public class Main {
+public class 단어뒤집기 {
     public static ArrayList<String> solution(int n, String[] str) {
         ArrayList<String> answer = new ArrayList<>();
         for (String x : str) {
@@ -29,6 +29,7 @@ public class Main {
         for (String c : solution(n, str)) {
             System.out.println(c);
         }
+        kb.close();
     }
 
 }

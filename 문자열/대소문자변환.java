@@ -1,6 +1,6 @@
 import java.util.*;;
 
-public class Main {
+public class 대소문자변환 {
     public static String solution(String str) {
         String answer = "";
         for (char c : str.toCharArray()) {

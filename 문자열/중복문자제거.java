@@ -1,6 +1,6 @@
 import java.util.*;;
 
-public class Main {
+public class 중복문자제거 {
     public static String solution(String str) {
         String answer = "";
         for (int i = 0; i < str.length(); i++) {
@@ -15,7 +15,7 @@ public class Main {
         Scanner kb = new Scanner(System.in);
         String str = kb.next();
         System.out.println(solution(str));
-
+        kb.close();
     }
 
 }

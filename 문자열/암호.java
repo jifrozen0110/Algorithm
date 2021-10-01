@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class 암호 {
     public static String solution(int cnt, String str) {
         String answer = "";
 
@@ -21,6 +21,6 @@ public class Main {
         int cnt = kb.nextInt();
         String str = kb.next();
         System.out.println(solution(cnt, str));
-
+        kb.close();
     }
 }
