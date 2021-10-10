@@ -40,6 +40,7 @@ public class 멘토링 {
             }
         }
         System.out.print(answer);
+        sc.close();
     }
 
 }

@@ -6,6 +6,7 @@ public class 문자찾기 {
         String str = kb.next();
         char c = kb.next().charAt(0);
         System.out.print(solution(str, c));
+        kb.close();
     }
 
     public static int solution(String str, char t) {

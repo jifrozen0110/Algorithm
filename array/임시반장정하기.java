@@ -32,7 +32,7 @@ public class 임시반장정하기 {
         }
 
         System.out.print(index);
-
+        sc.close();
     }
 
 }
