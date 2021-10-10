@@ -19,6 +19,7 @@ public class 왕실의_나이트 {
                 answer++;
         }
         System.out.print(answer);
+        sc.close();
     }
 
 }

@@ -24,6 +24,6 @@ public class 시각 {
             }
         }
         System.out.print(answer);
-
+        sc.close();
     }
 }
