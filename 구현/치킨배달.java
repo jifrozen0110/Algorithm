@@ -1,58 +1,8 @@
+package 구현;
 import java.util.*;
 import java.io.*;
 
-//치킨집 고르기 (조합)
-class Combination {
-    private int n;// 치킨집 전체 개수
-    private int r;// 뽑을 개수
-    private int[] now; // 현재 조합
-    private ArrayList<ArrayList<Position>> result; // 모든 조합
 
-    public ArrayList<ArrayList<Position>> getResult() {
-        return result;
-    }
-
-    public Combination(int n, int r) {
-        this.n = n;
-        this.r = r;
-        this.now = new int[r];
-        this.result = new ArrayList<ArrayList<Position>>();
-    }
-
-    public void combination(ArrayList<Position> arr, int depth, int index, int target) {
-        if (depth == r) {
-            ArrayList<Position> temp = new ArrayList<>();
-            for (int i = 0; i < now.length; i++) {
-                temp.add(arr.get(now[i]));
-            }
-            result.add(temp);
-            return;
-        }
-        if (target == n)
-            return;
-        now[index] = target;
-        combination(arr, depth + 1, index + 1, target + 1);
-        combination(arr, depth, index, target + 1);
-    }
-}
-
-class Position {
-    private int x;
-    private int y;
-
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
-    }
-}
 
 public class 치킨배달 {
 
@@ -60,7 +10,58 @@ public class 치킨배달 {
     public static int[][] arr = new int[50][50];
     public static ArrayList<Position> chicken = new ArrayList<>();
     public static ArrayList<Position> house = new ArrayList<>();
+    //치킨집 고르기 (조합)
+    static class Combination {
+        private int n;// 치킨집 전체 개수
+        private int r;// 뽑을 개수
+        private int[] now; // 현재 조합
+        private ArrayList<ArrayList<구현.Position>> result; // 모든 조합
 
+        public ArrayList<ArrayList<구현.Position>> getResult() {
+            return result;
+        }
+
+        public Combination(int n, int r) {
+            this.n = n;
+            this.r = r;
+            this.now = new int[r];
+            this.result = new ArrayList<ArrayList<구현.Position>>();
+        }
+
+        public void combination(ArrayList<구현.Position> arr, int depth, int index, int target) {
+            if (depth == r) {
+                ArrayList<구현.Position> temp = new ArrayList<>();
+                for (int i = 0; i < now.length; i++) {
+                    temp.add(arr.get(now[i]));
+                }
+                result.add(temp);
+                return;
+            }
+            if (target == n)
+                return;
+            now[index] = target;
+            combination(arr, depth + 1, index + 1, target + 1);
+            combination(arr, depth, index, target + 1);
+        }
+    }
+
+    static class Position {
+        private int x;
+        private int y;
+
+        public Position(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return this.x;
+        }
+
+        public int getY() {
+            return this.y;
+        }
+    }
     public static int getSum(ArrayList<Position> candidates) {
         int result = 0;
         // 모든 집에 대하여
