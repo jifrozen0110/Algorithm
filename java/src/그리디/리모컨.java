@@ -1,3 +1,5 @@
+package 그리디;
+
 import java.util.*;
 
 public class 리모컨 {
