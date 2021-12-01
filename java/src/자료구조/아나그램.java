@@ -1,4 +1,4 @@
-package HashMap_TreeSet;
+package 자료구조;
 
 import java.io.BufferedReader;
 import java.io.IOException;
