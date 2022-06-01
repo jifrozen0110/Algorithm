@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Solution {
+public class 무지의_먹방_라이브 {
 	public int solution(int[] food_times, long k) {
 		int len = food_times.length;
 		List<Food> foods = new LinkedList<Food>();
