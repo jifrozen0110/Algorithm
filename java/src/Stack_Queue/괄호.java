@@ -15,7 +15,10 @@ public class 괄호 {
 			for(char c:str.toCharArray()){
 				if(c=='(') count++;
 				else {
-					if(count==0) checkRight=false;
+					if(count==0) {
+						checkRight=false;
+						break;
+					}
 					count--;
 				}
 			}

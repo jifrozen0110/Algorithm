@@ -25,8 +25,8 @@ public class 케빈_베이컨의_6단계_법칙 {
 			}
 		}
 
+		int a=sc.nextInt();
 		for(int i=0;i<m;i++){
-			int a=sc.nextInt();
 			int b=sc.nextInt();
 			arr[a][b]=1;
 			arr[b][a]=1;

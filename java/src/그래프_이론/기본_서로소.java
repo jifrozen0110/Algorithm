@@ -30,7 +30,7 @@ public class 기본_서로소 {
 			parent[i]=i;
 		}
 
-		for(int i=0;i<3;i++){
+		for(int i=0;i<e;i++){
 			int a=sc.nextInt();
 			int b=sc.nextInt();
 			unionParent(a,b);
