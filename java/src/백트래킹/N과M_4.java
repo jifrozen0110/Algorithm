@@ -28,10 +28,10 @@ public class N과M_4 {
 		}
 		for(int i=start;i<=N;i++){
 
-			if(visited[i]==0){
+			if(visited[i]==0||(cnt>=1&&arr[cnt-1]==i)){
 				visited[i]=1;
 				arr[cnt]=i;
-				DFS(cnt+1,arr[cnt]+1,visited,arr);
+				DFS(cnt+1,i,visited,arr);
 				visited[i]=0;
 			}
 
