@@ -1,3 +1,5 @@
+package 백트래킹;
+
 import java.util.Scanner;
 
 public class 좋은수열 {
