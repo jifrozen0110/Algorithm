@@ -21,4 +21,4 @@ public class 나머지 {
 		}
 
 	}
-}
+
