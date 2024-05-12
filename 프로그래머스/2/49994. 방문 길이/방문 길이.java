@@ -8,7 +8,7 @@ class Solution {
         
         int startX=5;
         int startY=5;
-
+        
         HashSet<String> set=new HashSet<>();
         
         for(char dir:dirs.toCharArray()){
@@ -22,8 +22,7 @@ class Solution {
                     set.add(startX+" "+startY+" "+nx+" "+ny);
                     set.add(nx+" "+ny+" "+startX+" "+startY);
                     
-                    startX=nx;
-                    startY=ny;
+                    startX=nx;startY=ny;
                     
                 }
             }
