@@ -19,20 +19,20 @@ class Solution {
         int answer = INF;
         int n=board.length;
         int[][][] visited=new int[board.length][board.length][4];
-        
+
         for(int i=0;i<board.length;i++){
             for(int j=0;j<n;j++){
                 Arrays.fill(visited[i][j],INF);
             }
         }
-        
+
         ArrayDeque<Node> q=new ArrayDeque<>();
         visited[0][0][0]=0;
         visited[0][0][1]=0;
         visited[0][0][2]=0;
         visited[0][0][3]=0;
         q.add(new Node(0,0,-1,0));
-        
+
         while(!q.isEmpty()){
             Node now=q.poll();
             for(int d=0;d<4;d++){
@@ -46,18 +46,18 @@ class Solution {
                 }else{
                     newCost = now.cost + 600;
                 }
-                
+
                 if(nx==n-1&&ny==n-1){
                     answer=Math.min(answer,newCost);
                 }
 
-                else if (visited[nx][ny][d]==0||visited[nx][ny][d] > newCost) {
+                else if (visited[nx][ny][d]==0||visited[nx][ny][d] >= newCost) {
                     visited[nx][ny][d]= newCost;
-                    q.add(new Node(nx, ny, d % 2,newCost));
+                    q.add(new Node(nx, ny, d,newCost));
                 }
             }
         }
-        
+
         return answer;
     }
 }
