@@ -1,50 +1,43 @@
 import java.util.*;
 class Solution {
+    static boolean[] visited;
+    static int answer;
+    static int total;
+    static ArrayList<Integer>[] arr;
     public int solution(int n, int[][] wires) {
-        int answer = Integer.MAX_VALUE;
+        answer=n;
+        total=n;
+        arr=new ArrayList[n+1];
         
-        int[][] wiresArr=new int[n+1][n+1];
-        
-        for(int i=0;i<n-1;i++){
-            wiresArr[wires[i][0]][wires[i][1]]=1;
-            wiresArr[wires[i][1]][wires[i][0]]=1;
+        for(int i=0;i<=n;i++){
+            arr[i]=new ArrayList<Integer>();
         }
         
-        for(int i=0;i<n-1;i++){
-            wiresArr[wires[i][0]][wires[i][1]]=0;
-            wiresArr[wires[i][1]][wires[i][0]]=0;
-            
-            int result=bfs(wiresArr,wires[i][0],n);
-            
-            answer=Math.min(answer,Math.abs(result-(n-result)));
-            
-            wiresArr[wires[i][0]][wires[i][1]]=1;
-            wiresArr[wires[i][1]][wires[i][0]]=1;
+        for(int[] wire:wires){
+            arr[wire[0]].add(wire[1]);
+            arr[wire[1]].add(wire[0]);
         }
+        
+        visited=new boolean[n+1];
+        
+        DFS(1);
+        
         return answer;
     }
-    
-    public int bfs(int[][] arr,int start,int n){
-        int result=1;
-        
-        int[] visited=new int[n+1];
-        Queue<Integer> q=new LinkedList<>();
-        
-        q.add(start);
-        visited[start]=1;
-        
-        while(!q.isEmpty()){
-            int a=q.poll();
-            for(int i=1;i<=n;i++){
-                if(arr[a][i]==1&&visited[i]==0){
-                    visited[i]=1;
-                    result++;
-                    q.add(i);
-                }
+    private static int DFS(int start){
+        visited[start]=true;
+        int sum=0;
+        for(int i=0;i<arr[start].size();i++){
+            if(!visited[arr[start].get(i)]){
+                int count=DFS(arr[start].get(i));
+                
+                answer=Math.min(Math.abs(count-(total-count)),answer);
+                
+                sum+=count;
             }
+            
         }
         
-        return result;
-        
+        return sum+1;
     }
 }
