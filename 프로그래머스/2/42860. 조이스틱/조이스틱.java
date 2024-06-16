@@ -1,21 +1,24 @@
-class Solution {
+public class Solution {
     public int solution(String name) {
+        int length = name.length();
         int answer = 0;
-        int len=name.length();
-        
-        int move=len-1;
-        for(int i=0;i<len;i++){
-            answer+=Math.min(name.charAt(i)-'A','Z'-name.charAt(i)+1);
-            
-            int index=i+1;
-            while(index<len&&name.charAt(index)=='A'){
-                index++;
+        int minMove = length - 1;
+
+        for (int i = 0; i < length; i++) {
+            char c = name.charAt(i);
+            int diffA = c - 'A';
+            int diffZ = 'Z' - c + 1;
+            answer += Math.min(diffA, diffZ);
+
+            int next = i + 1;
+            while (next < length && name.charAt(next) == 'A') {
+                next++;
             }
-            
-            move=Math.min(move,i*2+(len-index));
-            move=Math.min(move,i+(len-index)*2);
+            minMove = Math.min(minMove, i + length - next + Math.min(i, length - next));
         }
 
-        return answer+move;
+        answer += minMove;
+        return answer;
     }
+
 }
