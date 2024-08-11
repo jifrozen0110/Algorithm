@@ -1,12 +1,18 @@
 import sys
-sys.setrecursionlimit(10**8)
-input=sys.stdin.readline
 
+input=sys.stdin.readline
 A,B,C=map(int,input().split())
 
-# def multify(cnt):
-#     if cnt==B:
-#         return 1
-#     return multify(cnt+1)*A%C
+answer=1
+b = bin(B)[2:][::-1]
 
-print(pow(A,B,C))
+ap=[A]
+
+for _ in range (len(b)-1):
+    ap.append(ap[-1]**2%C)
+
+for i in range (len(b)):
+    if b[i]=='1':
+        answer=(answer*ap[i])%C
+
+print(answer%C)
