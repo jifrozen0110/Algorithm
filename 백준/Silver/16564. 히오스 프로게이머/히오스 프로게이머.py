@@ -1,8 +1,3 @@
-# 3 10
-# 10
-# 20
-# 15
-
 import sys
 input=sys.stdin.readline
 
@@ -19,13 +14,18 @@ while start<=end:
     mid=(start+end)//2
     sum=0
     for i in range (N):
-        if mid>arr[i]:
-            sum+=mid-arr[i]
+        if arr[i]>=mid:
+            break
+        sum+=mid-arr[i]
+
     if sum>K:
         end=mid-1
-    else:
+    elif sum<K:
         answer=mid
         start=mid+1
+    else:
+        answer=mid
+        break
 
 
 print(answer)
