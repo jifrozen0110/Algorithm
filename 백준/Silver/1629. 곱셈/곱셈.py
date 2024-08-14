@@ -1,18 +1,15 @@
 import sys
-
 input=sys.stdin.readline
+
 A,B,C=map(int,input().split())
 
-answer=1
-b = bin(B)[2:][::-1]
+def calc(base,n):
+    if n==1:
+        return base%C
+    if n%2==0:
+        return calc(base**2%C,n//2)%C
+    else:
+        return calc(base**2%C,n//2)*base%C
 
-ap=[A]
+print(calc(A,B))
 
-for _ in range (len(b)-1):
-    ap.append(ap[-1]**2%C)
-
-for i in range (len(b)):
-    if b[i]=='1':
-        answer=(answer*ap[i])%C
-
-print(answer%C)
