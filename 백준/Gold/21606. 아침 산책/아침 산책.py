@@ -27,8 +27,11 @@ def DFS(start):
 
 
 for i in range (1,N+1):
-    if not visited[i] and arr[i-1]=='1':
+    if not visited[i] and arr[i-1]=='0':
         result=DFS(i)
         total+=result*(result-1)
 
 print(total)
+
+
+
