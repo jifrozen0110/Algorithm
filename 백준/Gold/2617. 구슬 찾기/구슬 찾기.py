@@ -7,7 +7,6 @@ balls=[[]*N for _ in range (N)]
 
 small=[0]*N
 big=[0]*N
-indegree=[0]*N
 for i in range (M):
     a,b=map(int,input().split())
     balls[a-1].append(b-1)
