@@ -1,32 +1,21 @@
-import math
-
-def isPrime(num):
-
-    if num==1:
+import sys
+def isPrime(n):
+    if n==1:
         return False
-    if num==2 or num==3:
-        return True
-    if num%2==0:
-        return False
-
-    for i in range(3,int(math.sqrt(num)+1),2):
-        if num%i==0:
+    for i in range (2,n//2+1):
+        if n%i==0:
             return False
     return True
+input=sys.stdin.readline
 
-def main():
-    N=int(input())
+N=int(input())
+arr=list(map(int,input().split()))
 
-    answer=0
-    nums=list(map(int,input().split()))
+answer=0
+for a in arr:
+    if isPrime(a):
+        answer+=1
 
-    for num in nums:
-        if(isPrime(num)):
-            answer+=1
-    print(answer)
-
-
-if __name__=="__main__":
-    main()
+print(answer)
 
 
