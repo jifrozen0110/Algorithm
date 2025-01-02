@@ -1,24 +1,20 @@
 import sys
-
 input=sys.stdin.readline
 
-nanzangees=[int(input()) for _ in range(9)]
+arr=[int(input()) for _ in range (9)]
 
-sumHeight=sum(nanzangees)
-tmp=sumHeight
+target=sum(arr)-100
 
-nanzangees.sort()
 isCheck=False
-
-for i in range(9):
-    for j in range(i+1,9):
-        if tmp-(nanzangees[i]+nanzangees[j])==100:
-            expect=i,j
+for i in range (len(arr)):
+    for j in range (i+1,len(arr)):
+        if target==arr[i]+arr[j]:
+            arr.remove(arr[j])
+            arr.remove(arr[i])
             isCheck=True
             break
     if isCheck:
         break
+arr.sort()
 
-
-
-print(*(nanzangees[0:i]+nanzangees[i+1:j]+nanzangees[j+1:len(nanzangees)]),sep='\n')
+print(*arr,sep='\n')
