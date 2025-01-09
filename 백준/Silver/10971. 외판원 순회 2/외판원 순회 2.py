@@ -1,31 +1,28 @@
 import sys
-
 input=sys.stdin.readline
 
-T=int(input())
+N=int(input())
+min_value=10000001
+arr=[list(map(int,input().split())) for _ in range (N)]
 
-tracks=[list(map(int,input().split())) for _ in range(T)]
+visited=[False]*N
 
-answer=10**9
-
-def pickTrack(sum,cnt,current,start):
-    global answer
-    if sum>answer:
+def back(cnt,value,last,start):
+    global min_value
+    if value>min_value:
         return
-    if cnt==T and tracks[current][start]!=0:
-        if(answer>sum+tracks[current][start]):
-            answer=sum+tracks[current][start]
+    if cnt==N and arr[last][start]!=0:
+        min_value=min(min_value,value+arr[last][start])
         return
-    for i in range(T):
-        if not visited[i] and tracks[current][i]!=0:
-            visited[i]=True
-            pickTrack(sum+tracks[current][i],cnt+1,i,start)
-            visited[i]=False
+    for i in range (N):
+        if not visited[i] and arr[last][i]!=0:
+          visited[i]=True
+          back(cnt+1,value+arr[last][i],i,start)
+          visited[i]=False
 
-visited=[False]*T
-for i in range(T):
-    visited[i]=True
-    pickTrack(0,1,i,i)
-    visited[i]=False
-
-print(answer)
+for i in range (N):
+    if not visited[i]:
+        visited[i]=True
+        back(1,0,i,i)
+        visited[i]=False
+print(min_value)
