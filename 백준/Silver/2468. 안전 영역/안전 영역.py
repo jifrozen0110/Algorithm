@@ -34,7 +34,7 @@ def searchSection(rain):
                 cnt+=1
     return cnt
 
-for i in range (min_rain,max_rain+1):
+for i in range (min_rain,max_rain):
     answer=max(answer,searchSection(i))
 
 print(answer)
