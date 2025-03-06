@@ -1,23 +1,32 @@
-def solution(info, n, m):
-    L=len(info)
-    INF=float('inf')
+from collections import deque
+
+def bfs(x,y,info,dp):
+    N,M=len(dp),len(dp[0])
+    q=deque()
+    q.append((x,y))
     
-    dp=[[INF] * m for _ in range (L+1)]
-    dp[0][0]=0
-    
-    for i in range (L):
-        a_cost,b_cost=info[i]
-        for b in range(m):
-            if dp[i][b]==INF:
-                continue
+    for i in range(len(info)):
+        n=len(q)
+        for j in range (n):
+            x,y=q.popleft()
             
-            new_a=dp[i][b]+a_cost
-            if new_a<n:
-                dp[i+1][b]=min(dp[i+1][b],new_a)
-            new_b=b+b_cost
-            if new_b<m:
-                dp[i+1][new_b]=min(dp[i+1][new_b],dp[i][b])
+            nx=x+info[i][0]
+            if 0<=nx<N and dp[nx][y]!=i+1:
+                dp[nx][y]=i+1
+                q.append((nx,y))
+            ny=y+info[i][1]
+            if 0<=ny<M and dp[x][ny]!=i+1:
+                dp[x][ny]=i+1
+                q.append((x,ny))
+def solution(info, n, m):
+    N=len(info)
+    dp=[[0]*m for _ in range (n)]
     
-    answer=min(dp[L])
-                
-    return answer if answer!=INF else -1
+    bfs(0,0,info,dp)
+    
+    print(dp)
+    for i in range(len(dp)):
+        if dp[i].count(N)>0:
+            return i
+        
+    return -1
