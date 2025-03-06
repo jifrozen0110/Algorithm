@@ -1,25 +1,23 @@
 def solution(info, n, m):
-    num_items = len(info)
+    L=len(info)
+    INF=float('inf')
     
-    max_a = n
-    max_b = m
+    dp=[[INF] * m for _ in range (L+1)]
+    dp[0][0]=0
     
-    dp=[[[1e9] * (max_b+1) for _ in range (max_a+1)] for _ in range (num_items+1)]
-    dp[0][0][0]=0
-    
-    for i in range (1,num_items+1):
-        a_trace,b_trace=info[i-1]
-        for a in range (max_a+1):
-            for b in range (max_b+1):
-                if dp[i-1][a][b]!=1e9:
-                    if a+a_trace<=max_a:
-                        dp[i][a+a_trace][b]=min(dp[i][a+a_trace][b],dp[i-1][a][b]+a_trace)
-                    if b+b_trace<=max_b:
-                        dp[i][a][b+b_trace]=min(dp[i][a][b+b_trace],dp[i-1][a][b])
-    
-    min_a_trace=1e9
-    for a in range(max_a):
-        for b in range (max_b):
-            min_a_trace=min(min_a_trace,dp[num_items][a][b])
+    for i in range (L):
+        a_cost,b_cost=info[i]
+        for b in range(m):
+            if dp[i][b]==INF:
+                continue
             
-    return min_a_trace if min_a_trace != 1e9 else -1
+            new_a=dp[i][b]+a_cost
+            if new_a<n:
+                dp[i+1][b]=min(dp[i+1][b],new_a)
+            new_b=b+b_cost
+            if new_b<m:
+                dp[i+1][new_b]=min(dp[i+1][new_b],dp[i][b])
+    
+    answer=min(dp[L])
+                
+    return answer if answer!=INF else -1
