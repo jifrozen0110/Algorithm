@@ -1,0 +1,6 @@
+-- 코드를 작성해주세요
+select COUNT(*) as FISH_COUNT
+from FISH_INFO I join FISH_NAME_INFO N
+on I.FISH_TYPE=N.FISH_TYPE
+where N.FISH_NAME="BASS" or N.FISH_NAME="SNAPPER"
+
