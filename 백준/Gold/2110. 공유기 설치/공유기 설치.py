@@ -2,28 +2,31 @@ import sys
 input=sys.stdin.readline
 
 N,C=map(int,input().split())
-wifis=[int(input()) for _ in range (N)]
-wifis.sort()
+arr=[int(input()) for _ in range (N)]
 
-left=1
-right=wifis[-1]-wifis[0]
 answer=0
-while left<=right:
-    mid=(left+right)//2
+arr.sort()
 
-    start=wifis[0]
-    cnt=1
-    for i in range (1,N):
-        if wifis[i]-start>=mid:
-            start=wifis[i]
-            cnt+=1
-    if cnt>=C:
-        answer=mid
+left=0
+right=arr[-1]-arr[0]
+def installWifi(distance):
+    wifiCnt=1
+    start=arr[0]
+    for i in range (1,len(arr)):
+        if arr[i]-start>=distance:
+            wifiCnt+=1
+            start=arr[i]
+    return wifiCnt
+
+while (left<=right):
+
+    mid=(right+left)//2
+    if installWifi(mid)>=C:
         left=mid+1
+        answer=max(answer,mid)
     else:
         right=mid-1
 
+
 print(answer)
-
-
 
