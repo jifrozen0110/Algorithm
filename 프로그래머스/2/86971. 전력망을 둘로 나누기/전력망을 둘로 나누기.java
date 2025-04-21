@@ -1,43 +1,36 @@
-import java.util.*;
 class Solution {
-    static boolean[] visited;
-    static int answer;
-    static int total;
-    static ArrayList<Integer>[] arr;
+    static int count=0;
     public int solution(int n, int[][] wires) {
-        answer=n;
-        total=n;
-        arr=new ArrayList[n+1];
+        int answer = 101;
+//         System.out.println();
         
-        for(int i=0;i<=n;i++){
-            arr[i]=new ArrayList<Integer>();
+        int[][] map=new int[n+1][n+1];
+        for (int[] wire:wires){
+            map[wire[0]][wire[1]]=1;
+            map[wire[1]][wire[0]]=1;
         }
-        
-        for(int[] wire:wires){
-            arr[wire[0]].add(wire[1]);
-            arr[wire[1]].add(wire[0]);
+
+        for (int[] wire:wires){
+            count=1;
+            boolean[] visited=new boolean[n+1];
+            map[wire[0]][wire[1]]=0;
+            map[wire[1]][wire[0]]=0;
+            DFS(wire[0],visited,map);
+            map[wire[0]][wire[1]]=1;
+            map[wire[1]][wire[0]]=1;
+            answer=Math.min(Math.abs((n-count)-count),answer);
         }
-        
-        visited=new boolean[n+1];
-        
-        DFS(1);
         
         return answer;
     }
-    private static int DFS(int start){
+    public void DFS(int start,boolean[] visited,int[][] map){
         visited[start]=true;
-        int sum=0;
-        for(int i=0;i<arr[start].size();i++){
-            if(!visited[arr[start].get(i)]){
-                int count=DFS(arr[start].get(i));
-                
-                answer=Math.min(Math.abs(count-(total-count)),answer);
-                
-                sum+=count;
+        for (int i=1;i<map.length;i++){
+            if (map[start][i]==1 && !visited[i]){
+                count++;
+                DFS(i,visited,map);
             }
-            
         }
-        
-        return sum+1;
+        return;
     }
 }
