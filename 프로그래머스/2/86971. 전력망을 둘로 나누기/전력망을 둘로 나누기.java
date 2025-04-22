@@ -1,36 +1,46 @@
+import java.util.*;
 class Solution {
-    static int count=0;
-    public int solution(int n, int[][] wires) {
-        int answer = 101;
-//         System.out.println();
-        
-        int[][] map=new int[n+1][n+1];
-        for (int[] wire:wires){
-            map[wire[0]][wire[1]]=1;
-            map[wire[1]][wire[0]]=1;
+    static int[] uf;
+    public int find(int a){
+        if (uf[a]<0){
+            return a;
         }
-
-        for (int[] wire:wires){
-            count=1;
-            boolean[] visited=new boolean[n+1];
-            map[wire[0]][wire[1]]=0;
-            map[wire[1]][wire[0]]=0;
-            DFS(wire[0],visited,map);
-            map[wire[0]][wire[1]]=1;
-            map[wire[1]][wire[0]]=1;
-            answer=Math.min(Math.abs((n-count)-count),answer);
-        }
-        
-        return answer;
+        a=find(uf[a]);
+        return a;
     }
-    public void DFS(int start,boolean[] visited,int[][] map){
-        visited[start]=true;
-        for (int i=1;i<map.length;i++){
-            if (map[start][i]==1 && !visited[i]){
-                count++;
-                DFS(i,visited,map);
-            }
+    public void merge(int a,int b){
+        int p_a=find(a);
+        int p_b=find(b);
+        if (p_a==p_b){
+            return;
         }
-        return;
+        uf[p_a]+=uf[p_b];
+        uf[p_b]=p_a;
+    }
+    public int solution(int n, int[][] wires) {
+        int answer = Integer.MAX_VALUE;
+        
+        
+        for (int i=0;i<wires.length;i++){
+            uf=new int[n+1];
+            Arrays.fill(uf,-1);
+            for (int j=0;j<wires.length;j++){
+                if (i==j){
+                    continue;
+                }
+                merge(wires[j][0],wires[j][1]);
+            }
+            int[] temp=new int[2];
+            int index=0;
+            for (int j=1;j<uf.length;j++){
+                if(uf[j]<0){
+                    temp[index]=uf[j];
+                    index++;
+                }
+            }
+            
+            answer=Math.min(answer,Math.abs(temp[0]-temp[1]));
+        }
+        return answer;
     }
 }
