@@ -5,36 +5,34 @@ class Solution {
         
         ArrayList<ArrayList<Integer>> arr=new ArrayList<>();
         
-        int[] visited=new int[n+1];
-        for(int i=0;i<n+1;i++){
+        for (int i=0;i<=n;i++){
             arr.add(new ArrayList<>());
         }
         
-        for(int i=0;i<edge.length;i++){
-            arr.get(edge[i][0]).add(edge[i][1]);
-            arr.get(edge[i][1]).add(edge[i][0]);
+        for (int[] e:edge){
+            arr.get(e[0]).add(e[1]);
+            arr.get(e[1]).add(e[0]);
         }
         
-        Queue<Integer> q=new LinkedList<>();
-        
-        q.offer(1);
-        visited[1]=1;
+        Queue<int[]> q=new LinkedList<>();
+        int[] path=new int[n+1];
+        path[1]=1;
+        q.add(new int[]{1,0});
         while(!q.isEmpty()){
-            int num=q.poll();
-            for(int i=0;i<arr.get(num).size();i++){
-                if(visited[arr.get(num).get(i)]==0){
-                    visited[arr.get(num).get(i)]=visited[num]+1;
-                    q.offer(arr.get(num).get(i));
+            int[] start=q.poll();
+            
+            for (int i=0;i<arr.get(start[0]).size();i++){
+                if (path[arr.get(start[0]).get(i)]==0){
+                    path[arr.get(start[0]).get(i)]=path[start[0]]+1;
+                    q.add(new int[]{arr.get(start[0]).get(i),path[start[0]]+1});
                 }
             }
+            
         }
-        
-        Arrays.sort(visited);
-        
-        int max=visited[visited.length-1];
-        
-        for(int i=visited.length-1;i>=0;i--){
-            if(visited[i]==max){
+                
+        int m=Arrays.stream(path).max().getAsInt();
+        for (int i=0;i<path.length;i++){
+            if(m==path[i]){
                 answer++;
             }
         }
